@@ -18,14 +18,20 @@ npm install
 ```
 2. Create a .env file with Zoho API credentials (make sure you have created an OAuth client beforehand as per: https://desk.zoho.com/DeskAPIDocument#OauthTokens#RegisteringAClient)
 ```env
-ZOHO_ORGID=807062861
-ZOHO_CLIENT_ID=1000.5JB6XKM401PS6L44VXFAIU7L03RSTO
-ZOHO_CLIENT_SECRET=bf20327352b54d798c4407a41d59e716de2c6fbea4
-ZOHO_REDIRECT_URI=http://localhost:3000/zoho/authcallback
+ZOHO_ORGID=<your-zoho-org-id>
+ZOHO_CLIENT_ID=<your-zoho-application-client-id>
+ZOHO_CLIENT_SECRET=<your-zoho-application-client-secret>
+ZOHO_REDIRECT_URI=<your-zoho-application-redirect-uri>
 ```
 
 3.  Start the server on http://localhost:3000
+```bash
+npm start
 ```
+
+or in development mode
+
+```bash
 npm run dev
 ```
 
