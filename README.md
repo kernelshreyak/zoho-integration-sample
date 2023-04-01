@@ -35,4 +35,4 @@ or in development mode
 npm run dev
 ```
 
-1. You should now be able to login with required Zoho account and use the app as per screencast: [here](https://drive.google.com/file/d/10gPzpfJ8FG6YHFHQqxHHOaPvTH94Hdlg/view?usp=share_link)
+4. You should now be able to login with required Zoho account and use the app as per screencast: [here](https://drive.google.com/file/d/10gPzpfJ8FG6YHFHQqxHHOaPvTH94Hdlg/view?usp=share_link)
