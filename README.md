@@ -30,4 +30,4 @@ ZOHO_REDIRECT_URI=http://localhost:3000/zoho/authcallback
 npm run dev
 ```
 
-4. You should now be able to login with required Zoho account and use the app as per screencast: [here](Screencast%202023-04-01%2018:10:33.mp4)
+1. You should now be able to login with required Zoho account and use the app as per screencast: [here](https://drive.google.com/file/d/10gPzpfJ8FG6YHFHQqxHHOaPvTH94Hdlg/view?usp=share_link)
