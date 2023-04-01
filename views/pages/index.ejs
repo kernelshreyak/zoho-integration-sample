@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Zoho Integration Sample</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>Zoho integration sample</h1>
+  <br>
+  <% if(!isZohoAuth && zohoError == "") { %>
+  <button onclick="zohoAuthInit()" class="btn btn-success">Login with Zoho</button>
+  <% } %>
+</div>
+
+<div id="app">
+  <% if(isZohoAuth && zohoAccessToken != "" && zohoError == "") { %>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Zoho Ticket Info</h3>
+          <p>Enter ticket ID below to view info and add a test comment</p>
+          <input type="text" class="form-control" placeholder="Zoho ticket ID" id="ticketId" />
+          <br>
+          <button class="btn btn-primary" onclick="getTicketInfo()">Get ticket info</button>
+          <pre id="ticketinfo" style="max-height: 300px;overflow-y:scroll;background-color: beige;">
+
+          </pre>
+          <br>
+          <br>
+          <textarea id="comment" cols="30" rows="5"></textarea>
+          <br>
+          <button class="btn btn-warning" onclick="addTicketComment()">Add a test comment</button>
+          <br>
+          <pre id="commentresponse" style="max-height: 300px;overflow-y:scroll;background-color: beige;">
+
+          </pre>
+        </div>
+    </div>
+    <% } %>  
+</div>
+
+<% if(zohoError != "") { %>
+  <div class="alert alert-danger"><b>Zoho zohoError: <%=zohoError%></b> &nbsp; <a href="/">Login again</a></div>
+<% } %>
+
+</body>
+
+<script  type="application/javascript">
+  function zohoAuthInit(){
+    location.href=`<%=zohoAuthUrl%>`;
+  }
+
+  function getTicketInfo() {
+    document.getElementById("ticketinfo").innerHTML = "<b>Loading...</b>";
+    fetch('/zoho/ticketinfo?ticketId='+document.getElementById('ticketId').value+'&token=<%=zohoAccessToken%>')
+    .then((response) => response.json())
+    .then(data => {
+
+      console.log(data);
+      document.getElementById("ticketinfo").innerHTML = JSON.stringify(data,null,2);
+    })
+  }
+
+  function addTicketComment() {
+    document.getElementById("commentresponse").innerHTML = "Adding comment..";
+    fetch('/zoho/add_ticket_comment?token=<%=zohoAccessToken%>',{
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        comment: document.getElementById('comment').value,
+        ticketId: document.getElementById('ticketId').value
+      })
+    })
+    .then((response) => response.json())
+    .then(res => {
+      document.getElementById("commentresponse").innerHTML = JSON.stringify(res,null,2);
+      console.log(res);
+    })
+  }
+
+</script>
+</html>
