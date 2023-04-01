@@ -3,9 +3,8 @@
 Sample app showcasing Zoho Desk API integration. 
 Backend is in Node.js Express and frontend is built using EJS templating engine to keep things coupled in a single application. 
 
-Vue3 is also used within the EJS template to showcase usage of REST API communcation to the express backend
 
-This can be easily extended to be used with a frontend web app using a JavaScript framework like React
+This can be easily extended to be used with a frontend web app using a JavaScript framework like React, Vue, Angular etc.
 
 API documentation reference:
 
